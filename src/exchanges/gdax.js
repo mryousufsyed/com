@@ -150,6 +150,19 @@ class GDAX {
     })
   }
 
+  withdraw(currency, amount, crypto_address) {
+    return new Promise((resolve, reject) => {
+      this.gdax.withdrawCrypto({ amount, currency, crypto_address },
+        (err, response, data) => {
+          if(err) {
+            reject(err.message)
+          } else {
+            resolve(data)
+          }
+        })
+    })
+  }
+
 }
 
 module.exports = GDAX

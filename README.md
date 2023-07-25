@@ -298,10 +298,6 @@ Return current total, available, and pending balances for an exchange.
 
 Return or create a new address to which funds can be deposited.
 
-***Note:*** Due to how **Coinbase** and GDAX are intertwined, you must pass aditional authentication in order to interact with outside resources.
-
-***Note:*** **Bitfinex** requires a wallet type.
-
 ```javascript
   address(sym[, opts]) {
   }
@@ -324,6 +320,6 @@ Return or create a new address to which funds can be deposited.
 
 This project is a work in progress as I'm adding more exchanges and functions. Help support this project with a :coffee: or PR!
 
-BTC: `161kbECzKtDKfLXnC5Lwk2hgsQLtg7BNXd`
+BTC: `137c3LpHhNX9FwNXfDLJCJzqtYNPdJV2V1 `
 
-ETH: `0xae89158b43000e07e76b205b870a1e34653d2668`
+ETH: `0x6a3d68b6d872f7d08fa8936ad5775acdaab5a7e0`

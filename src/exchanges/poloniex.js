@@ -133,6 +133,16 @@ class Poloniex {
     })
   }
 
+  withdraw(asset, amount, address) {
+    return new Promise((resolve, reject) => {
+      this.plnx.withdraw(asset, amount, address)
+        .then( response => {
+          resolve(response)
+        })
+        .catch(err => reject(err.message))
+    })
+  }
+
 }
 
 module.exports = Poloniex
