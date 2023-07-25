@@ -100,50 +100,59 @@ class Bitfinex {
     return privateMethods.addOrder.apply(this, ['sell', ...arguments])
   }
 
-  balances() {
+  balances(opts) {
     return new Promise((resolve, reject) => {
-      this.bitfinex.wallet_balances(
-        (err, balances) => {
-          if(err) {
-            reject(err.message)
-          } else {
-            balances = _.filter(balances, b => b.type === 'exchange')
-            balances = _.reduce(balances, (result, b) => {
-              let asset = b.currency.toUpperCase()
-              asset = (alt = Bitfinex.alts[asset]) ? alt : asset
-              let balance = parseFloat(b.amount)
-              let available = parseFloat(b.available)
+      let filterBalances = (balances) => {
+        balances = _.filter(balances, ({ type }) => type === opts.type)
+        balances = _.reduce(balances, (result, b) => {
+          let asset = b.currency.toUpperCase(), alt
+          asset = (alt = Bitfinex.alts[asset]) ? alt : asset
+          let balance = parseFloat(b.amount)
+          let available = parseFloat(b.available)
 
-              result[asset] = {
-                balance,
-                available,
-                pending: balance - available
-              }
-
-              return result
-            }, {})
-            resolve(balances)
+          result[asset] = {
+            balance,
+            available,
+            pending: balance - available
           }
-        })
+
+          return result
+        }, {})
+        return balances
+      }
+
+      let now = Date.now()
+      if(this.last && now > (this.last + (2 * 60 * 1000))) {
+        resolve(filterBalances(this.bals))
+      } else {
+        this.bitfinex.wallet_balances(
+          (err, balances) => {
+            if(err)
+              return reject(err.message)
+
+            this.last = Date.now()
+            this.bals = balances
+
+            resolve(filterBalances(balances))
+          })
+      }
     })
   }
 
-  address(asset) {
+  address(asset, opts) {
     return new Promise((resolve, reject) => {
       asset = _.reduce(Bitfinex.alts, (value, sym, alt) => value.replace(sym, alt), asset)
       let method = Bitfinex.methods[asset]
-      if(method) {
-        this.bitfinex.new_deposit(null, method, 'exchange',
-          (err, response) => {
-            if(err){
-              reject(err.message)
-            } else {
-              resolve(response.address)
-            }
-          })
-      } else {
-        reject(`Cannot deposit ${asset}.`)
-      }
+      if(!method)
+        return reject(`Cannot deposit ${asset}.`)
+
+      this.bitfinex.new_deposit(null, method, opts.exchange,
+        (err, response) => {
+          if(err)
+            reject(`Cannot deposit ${asset}.`)
+
+          resolve(response.address)
+        })
     })
   }
 
@@ -167,13 +176,14 @@ Bitfinex.methods = {
 
 const privateMethods = {
 
-  addOrder(type, pair, amount, rate) {
+  addOrder(side, pair, amount, rate, type) {
     return new Promise((resolve, reject) => {
       pair = _.reduce(Bitfinex.alts, (value, sym, alt) => value.replace(sym, alt), pair)
       pair = pair.replace('_','')
       amount = amount.toString()
       rate = rate.toString()
-      this.bitfinex.new_order(pair, amount, rate, 'bitfinex', type, 'limit',
+      type = type || 'exchange limit'
+      this.bitfinex.new_order(pair, amount, rate, 'bitfinex', side, type,
         (err, res) => {
           if(err) {
             reject(err.message)

@@ -6,7 +6,9 @@ The goal of this project is to be able to interact with a number of different cr
 
 ## Available Exchanges
 
+* Binance
 * Bitfinex
+* Bitstamp
 * Bittrex
 * ~~BTC-e~~ ***shutdown***
 * GDAX
@@ -18,7 +20,7 @@ The goal of this project is to be able to interact with a number of different cr
 
 ## Usage
 
-* **NOTE: Pairs are expected to be in the format *BASE_QUOTE***
+* ***NOTE*: Pairs are expected to be in the format *BASE_QUOTE***
 * All methods return a promise with the result passed.
 
 ### Top Level
@@ -242,7 +244,7 @@ Example:
 Place a buy or sell order on an exchange.
 
 ```javascript
-  buy(pair, amount[, rate]) {
+  buy(pair, amount[, rate[, type[, extra]]]) {
   }
 ```
 
@@ -251,6 +253,11 @@ Place a buy or sell order on an exchange.
 * `pair` string - A pair value to trade against.
 * `amount` number - Number representing the amount of ***BASE*** to buy/sell.
 * `rate` number (optional) - Pass a specific rate of the pair to execute.
+  * Only optional if exchange API allows "market orders." Must set `type` accordingly.
+* `type` string (optional) - Define type of order to execute.
+  * Not all exchanges allow to change order type (i.e. market orders).
+  * For exchanges that `rate` is required, it will default to a limit order.
+* `extra` object (optional) - Extra parameters that are REQUIRED by the exchange, if applicable.
 
 ###### Response
 
@@ -262,16 +269,23 @@ Place a buy or sell order on an exchange.
 
 Return current total, available, and pending balances for an exchange.
 
+***NOTE***: **Bitfinex** requires a wallet type to fetch. The underlying method fetches all wallet types on request and will refresh, if called, every 2 minutes to allow immediate subsequent calls.
+
 ```javascript
-  balances() {
+  balances([opts]) {
   }
 ```
+
+###### Arguments
+
+* `opts` object (optional) - Additional options.
+  * `type` string (**Bitfinex**) - Wallet type ('deposit', 'exchange', 'trading').
 
 ###### Response
 
 ```javascript
   {
-    'ETH_BTC': {
+    'BTC': {
       balance: 0.0000,
       available: 0.0000,
       pending: 0.0000
@@ -284,8 +298,6 @@ Return current total, available, and pending balances for an exchange.
 
 Return or create a new address to which funds can be deposited.
 
-***Note:*** Due to how Coinbase and GDAX are intertwined, you can only fetch addresses associated with Coinbase's API when working with GDAX.
-
 ```javascript
   address(sym[, opts]) {
   }
@@ -295,7 +307,8 @@ Return or create a new address to which funds can be deposited.
 
 * `sym` string - The asset symbol of the address to fetch.
 * `opts` object (optional) - Additional options.
-  * `auth` object - Secondary API authentication needed for Coinbase.
+  * `auth` object (**Coinbase**) - Secondary API authentication.
+  * `type` string (**Bitfinex**) - Wallet type ('deposit', 'exchange', 'trading').
 
 ###### Response
 
@@ -307,6 +320,6 @@ Return or create a new address to which funds can be deposited.
 
 This project is a work in progress as I'm adding more exchanges and functions. Help support this project with a :coffee: or PR!
 
-BTC: `161kbECzKtDKfLXnC5Lwk2hgsQLtg7BNXd`
+BTC: `137c3LpHhNX9FwNXfDLJCJzqtYNPdJV2V1 `
 
-ETH: `0xae89158b43000e07e76b205b870a1e34653d2668`
+ETH: `0x6a3d68b6d872f7d08fa8936ad5775acdaab5a7e0`

@@ -1,3 +1,42 @@
+# v3.0.2
+
+* Typo.
+
+# v3.0.1
+
+* Fix Bitfinex to default to limit order.
+
+# v3.0.0
+
+* Default to be limit orders.
+
+# v2.6.1
+
+* Allow user to customize order type.
+
+# v2.6.0
+
+* Avoid 'not enough balance' issue.
+
+# v2.5.1
+# v2.5.0
+
+* Exchanges added:
+  * Bitstamp
+
+# v2.4.0
+
+* Exchanges added:
+  * Binance
+
+# v2.3.3
+
+* Hot fix for Bitfinex balances.
+
+# v2.3.2
+
+* Need wallet type for Bitfinex balance and adderss fetching.
+
 # v2.3.1
 
 * Fix GDAX package to install.
