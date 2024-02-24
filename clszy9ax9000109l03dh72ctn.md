@@ -49,6 +49,8 @@ Certainly! Let’s delve into the differences between **virtual cards** and **ph
 
 In summary, virtual cards offer convenience and added security for online shopping, while physical cards remain versatile for various situations. Choose wisely based on your needs! 🌟💳
 
+![Redotpay](https://cdn.hashnode.com/res/hashnode/image/upload/v1708771252186/184b965f-4c80-49a8-ac42-593996db1f2a.png align="center")
+
 Read more articles: [**Redotpay Promo Code: Claim Free $70 USD Referral Bonus**](https://blog.dollarpesa.com/redotpay-promo-code-claim-your-free-7-usd-referral-bonus)
 
 ## What is Redotpay?
