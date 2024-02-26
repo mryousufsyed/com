@@ -6,7 +6,7 @@ datePublished: Thu Feb 01 2024 17:48:47 GMT+0000 (Coordinated Universal Time)
 cuid: cls3ifykl000208jr56zx32gp
 slug: redotpay-card-review-fees-limits-alternative
 cover: https://cdn.hashnode.com/res/hashnode/image/upload/v1706809490554/feb2f284-0c7b-4629-b254-1b2dc0273950.png
-tags: redotpay, redotpay-card, redotpay-visa-card, crypto-card
+tags: redotpay, redotpay-card, redotpay-visa-card, crypto-card, redotpay-card-review, redotpay-review
 
 ---
 
