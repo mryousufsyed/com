@@ -1,5 +1,6 @@
 ---
 title: "Exchange Perfect Money To Wise"
+seoTitle: "Perfect Money to Wise and Earn a 0.5% Reward"
 seoDescription: "Effortlessly exchange Perfect Money to Wise with Dollarpesa. Enjoy a smooth conversion process and a 0.5% bonus. Start now!"
 datePublished: Mon Mar 11 2024 18:44:15 GMT+0000 (Coordinated Universal Time)
 cuid: cltnalimk000908l6aatu45gt
