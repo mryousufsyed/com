@@ -14,11 +14,11 @@ tags: dollarpesa, order, dollarpesa-international-time
 
 Normally, all orders / payments were processed within **5 minutes to 30 minutes.**
 
-Still in case of first-time user it can **take up-to 2 to 6 business days** based on the bank details provided by the user.
+For first-time users, verification may take **2 to 4 business days**, depending on the bank details provided. **Credit card** and **debit card** payments may require **5 to 15 days** for processing.
 
-Also, all e-wallets exchanges usually takes **5 minutes to 30 minutes.** to reflect into your requested wallet.
+Also, all **e-wallets** exchanges usually takes **5 minutes to 30 minutes.** to reflect into your requested wallet.
 
-Cryptocurrency exchange will take **5 to 15 minutes to complete.**
+**Cryptocurrency** exchange will take **5 to 15 minutes to complete.**
 
 ### **DollarPesa Services Time / Hours:**
 
